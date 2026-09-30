@@ -1,14 +1,25 @@
-# dependencies
+# ── Dependencies ──────────────────────────────────────────────────────────────
 node_modules/
 frontend/node_modules/
 backend/node_modules/
 
-# build output
+# ── Build output ──────────────────────────────────────────────────────────────
 backend/dist/
 frontend/.next/
 frontend/out/
 
-# env — never commit credentials
+# ── TypeScript build cache ────────────────────────────────────────────────────
+tsconfig.tsbuildinfo
+**/*.tsbuildinfo
+
+# ── AI tool / Antigravity IDE files (not project code) ───────────────────────
+.agents/
+skills-lock.json
+
+# ── Vercel config (deploying to Render instead) ───────────────────────────────
+vercel.json
+
+# ── env — never commit credentials ───────────────────────────────────────────
 .env
 .env.*
 !.env.example
@@ -18,20 +29,20 @@ frontend/.env*
 !backend/.env.example
 !frontend/.env.example
 
-# prisma
-backend/prisma/dev.db
-
-# local document storage (LocalStorageAdapter)
+# ── Local document storage (LocalStorageAdapter) ──────────────────────────────
 backend/uploads/
 
-# logs
+# ── Prisma local DB ──────────────────────────────────────────────────────────
+backend/prisma/dev.db
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
 npm-debug.log*
 *.log
 
-# OS
+# ── OS ────────────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 
-# IDE
+# ── IDE ───────────────────────────────────────────────────────────────────────
 .vscode/
 .idea/
