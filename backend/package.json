@@ -2,6 +2,9 @@
   "name": "sih-approvals-backend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "main": "dist/index.js",
   "type": "commonjs",
   "scripts": {

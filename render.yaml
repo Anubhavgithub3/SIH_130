@@ -1,0 +1,49 @@
+services:
+  # ── Backend: Express API ─────────────────────────────────────────────────────
+  - type: web
+    name: udyog-setu-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: node dist/index.js
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      # ── Set these in Render Dashboard → Environment ──────────────────────────
+      # Do NOT put real values here — this file is committed to git
+      - key: JWT_SECRET
+        sync: false          # Render will prompt you to fill this in the dashboard
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: SUPABASE_JWKS_URL
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false          # Set to your frontend Render URL e.g. https://udyog-setu-frontend.onrender.com
+      - key: DEMO_PASSWORD
+        value: Demo@123
+
+  # ── Frontend: Next.js ────────────────────────────────────────────────────────
+  - type: web
+    name: udyog-setu-frontend
+    runtime: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      # ── Set this in Render Dashboard after backend deploys ───────────────────
+      - key: NEXT_PUBLIC_API_URL
+        sync: false          # Set to https://udyog-setu-backend.onrender.com/api
