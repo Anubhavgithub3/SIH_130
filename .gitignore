@@ -8,12 +8,15 @@ backend/dist/
 frontend/.next/
 frontend/out/
 
-# env
+# env — never commit credentials
 .env
-backend/.env
-frontend/.env
-backend/.env.local
-frontend/.env.local
+.env.*
+!.env.example
+!**/.env.example
+backend/.env*
+frontend/.env*
+!backend/.env.example
+!frontend/.env.example
 
 # prisma
 backend/prisma/dev.db
